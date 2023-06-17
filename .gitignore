@@ -1,0 +1,7 @@
+# Python-specific ignores
+*.pyc
+__pycache__/
+venv/
+env/
+*.env
+/api/myenv/

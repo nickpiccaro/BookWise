@@ -1,0 +1,14 @@
+
+aniso8601
+attrs
+click
+Flask
+flask-restx
+itsdangerous
+Jinja2
+jsonschema
+MarkupSafe
+pyrsistent
+pytz
+six
+Werkzeug
