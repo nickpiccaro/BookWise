@@ -6,6 +6,7 @@ This module provides functionality for XYZ.
 Author: Your Name
 """
 
+# pylint: disable=E0401
 from flask_restx import Namespace, Resource, fields
 
 api = Namespace("dogs", description="Dogs related operations")

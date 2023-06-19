@@ -4,4 +4,5 @@ __pycache__/
 venv/
 env/
 *.env
-/api/myenv/
+src/ai-ml/myenvml/
+src/api/myenv/
