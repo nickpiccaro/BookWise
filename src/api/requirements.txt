@@ -12,3 +12,7 @@ pyrsistent
 pytz
 six
 Werkzeug
+requests
+torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu117
+Pillow
+argparse
