@@ -3,3 +3,4 @@ torchvision
 torchaudio
 Pillow
 ultralytics
+pytesseract
