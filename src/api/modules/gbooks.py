@@ -11,7 +11,7 @@ import requests
 
 api = Namespace("books", description="Google Book related operations")
 
-@api.route('/books/<string:query>')
+@api.route('/<string:query>')
 @api.param("query", "The search query")
 @api.response(404, "No Books Found")
 class BookSearch(Resource):

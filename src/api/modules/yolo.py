@@ -1,38 +1,64 @@
-import argparse
-import io
+"""
+Users API
+
+This module provides functionality for App Users.
+"""
+from flask import Flask, request
 from PIL import Image
-
+from io import BytesIO
+from pathlib import Path
 import torch
-import requests
+from ultralytics import YOLO
+import cv2
+import pytesseract
+from werkzeug.datastructures import FileStorage
+
 # pylint: disable=E0401
-from flask_restx import Api, Resource
-
-app = Flask(__name__)
-api = Api(app, title='Object Detection API', version='1.0')
-
-DETECTION_URL = "/v1/object-detection/yolov5s"
+from flask_restx import Namespace, Resource, fields
 
 
-@api.route(DETECTION_URL)
-class ObjectDetection(Resource):
+
+def getTextFromBooks(img, yoloResults):
+    queries = []
+    # Load the image
+    image = img
+
+    for result in yoloResults:
+        boxes = result.boxes  # Boxes object for bbox outputs
+    index = 0
+    for box in boxes: 
+        x1, y1, x2, y2 = box.xyxy[0].numpy()
+        cropped_image = image.crop((x1, y1, x2, y2))
+        text = pytesseract.image_to_string(cropped_image)
+        text = ''.join(text.split('\n')).split('\f')
+        text = ''.join(text)
+        print(f"{index}: {text}")
+        queries.append(text)
+        index=index+1
+
+    return queries
+
+api = Namespace("yolo", description="yolo and ocr")
+
+upload_parser = api.parser()
+upload_parser.add_argument('image', location='files',
+                           type=FileStorage, required=True)
+
+
+@api.route('/upload')
+@api.expect(upload_parser)
+@api.response(404, "No Image")
+class YoloToOCR(Resource):
     def post(self):
-        if not request.method == "POST":
-            return
+        file = request.files['image']
+        img = Image.open(file)
+        model = YOLO("yolov8n.pt") 
+        # Images
+        imgs = [img]  # batch of images
 
-        if request.files.get("image"):
-            image_file = request.files["image"]
-            image_bytes = image_file.read()
-            img = Image.open(io.BytesIO(image_bytes))
-            results = model(img, size=640)
-            data = results.pandas().xyxy[0].to_json(orient="records")
-            return data
+        # Inference
+        results = model(imgs)
 
+        texts = getTextFromBooks(img, results)
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Flask API exposing yolov5 model")
-    parser.add_argument("--port", default=5000, type=int, help="port number")
-    args = parser.parse_args()
-
-    model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True)
-    model.eval()
-    app.run(host="0.0.0.0", port=args.port)
+        return texts
