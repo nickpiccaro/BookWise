@@ -5,4 +5,7 @@ venv/
 env/
 *.env
 src/ai-ml/myenvml/
-src/api/myenv/
+src/api/myenvapi/
+src/ai-ml/yolov8l.pt
+src/ai-ml/yolov8x.pt./.git/objects/01/8d07364d70c8a5219920bba4750e96ed1b2015
+
