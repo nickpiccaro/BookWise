@@ -6,6 +6,7 @@ attrs
 click
 Flask
 flask-restx
+flask_cors
 itsdangerous
 Jinja2
 jsonschema
