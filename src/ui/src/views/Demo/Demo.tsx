@@ -28,7 +28,7 @@ const Home: React.FC<DemoPageProps> = () => {
 
     const getDogs = () => {
       // Add your logic here
-      console.log("DEBUG | gettingDogs: ");
+      console.log("DEBUG | gettingDogs demo: ");
       return DogDataService.getAll()
         .then(response => {
           console.log("obtained dogs");
