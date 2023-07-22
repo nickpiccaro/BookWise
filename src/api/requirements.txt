@@ -2,6 +2,7 @@ torch>=2.0.1
 torchvision
 torchaudio
 aniso8601
+numpy
 attrs
 click
 Flask
@@ -20,3 +21,5 @@ Pillow
 argparse
 ultralytics
 pytesseract
+easyocr
+textract

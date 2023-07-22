@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
 import Demo from './views/Demo/Demo';
+import Welcome from './views/Welcome/Welcome'
+import Home from './views/Home/Home'
 import './App.css'; // Import CSS file
 
 const App: React.FC = () => {
@@ -28,7 +30,9 @@ const App: React.FC = () => {
         </nav>
 
         <Routes>
+          <Route path="/" element={<Welcome />} />
           <Route path="/demo" element={<Demo />} />
+          <Route path="/home" element={<Home />} />
         </Routes>
       </Router>
     </div>

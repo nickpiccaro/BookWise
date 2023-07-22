@@ -1,0 +1,45 @@
+.bookBody {
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px; /* Optional: Add padding to create space between content and border */
+    height: 220px;
+    display: flex;
+    flex-direction: row;
+}
+
+.bookBody:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect on hover */
+}
+
+/* .imageTitle {
+    display: flex;
+    flex-direction: column;
+}
+
+.imageThumbnail {
+    display: flex;
+    max-height: auto;
+    max-width: 20px;
+} */
+
+.imageTitle {
+    max-height: 300px; /* Set your desired maximum height here */
+    min-height: 300px;
+    max-width: 20%; /* Set a maximum width to prevent stretching on larger screens */
+    min-width: 20%;
+    display: flex;
+    align-items: center; /* Vertically center the image within the container */
+    flex-direction: column;
+}
+
+.imageTitle img {
+    max-width: 100%; /* Make sure the image doesn't exceed the container width */
+    height: auto; /* Maintain the original aspect ratio */
+}
+
+.otherBooks {
+    overflow: auto;
+    width: 70%;
+    max-width: 20%;
+    min-width: 20%;
+}

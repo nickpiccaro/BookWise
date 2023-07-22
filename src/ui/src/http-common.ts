@@ -2,9 +2,10 @@ import axios, { AxiosInstance, AxiosResponse, AxiosError } from 'axios';
 
 // Create an instance of Axios with custom configurations
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: 'https://nickpiccaro-automatic-pancake-w5rwg9jj76qhv4qw-5000.preview.app.github.dev', // Replace with your API base URL
+  baseURL: 'http://127.0.0.1:5000', // Replace with your API base URL
   headers: {
     'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
   },
 });
 

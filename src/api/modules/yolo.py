@@ -12,6 +12,10 @@ from ultralytics import YOLO
 import cv2
 import pytesseract
 from werkzeug.datastructures import FileStorage
+import numpy as np
+import re
+
+pytesseract.pytesseract.tesseract_cmd = 'tesseract'  # If Tesseract is in the system PATH
 
 # pylint: disable=E0401
 from flask_restx import Namespace, Resource, fields
@@ -22,16 +26,21 @@ def getTextFromBooks(img, yoloResults):
     queries = []
     # Load the image
     image = img
-
     for result in yoloResults:
         boxes = result.boxes  # Boxes object for bbox outputs
     index = 0
     for box in boxes: 
         x1, y1, x2, y2 = box.xyxy[0].numpy()
         cropped_image = image.crop((x1, y1, x2, y2))
-        text = pytesseract.image_to_string(cropped_image)
+        # inverted_image = cv2.bitwise_not(cropped_image)
+        cropped_image = cropped_image.convert('L')
+
+        config = '--dpi 400 --oem 3 --psm %d' % 1
+        text = pytesseract.image_to_string(cropped_image, config = config, lang='eng')
         text = ''.join(text.split('\n')).split('\f')
         text = ''.join(text)
+        pattern = r'[^a-zA-Z0-9_ ]'
+        text = re.sub(pattern, '', text)
         print(f"{index}: {text}")
         queries.append(text)
         index=index+1

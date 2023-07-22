@@ -1,0 +1,29 @@
+.bookItem {
+    display: flex;
+    margin: 5px;
+}
+
+.image {
+    max-height: 100px; /* Set your desired maximum height here */
+    max-width: 20%; /* Set a maximum width to prevent stretching on larger screens */
+    min-width: 20%;
+    display: flex;
+    align-items: center; /* Vertically center the image within the container */
+    flex-direction: column;
+}
+
+.image img {
+    max-width: 100%; /* Make sure the image doesn't exceed the container width */
+    height: auto; /* Maintain the original aspect ratio */
+}
+
+.bookInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.read-or-hide{
+    color: rgb(192,192,192);
+    cursor: pointer;
+}

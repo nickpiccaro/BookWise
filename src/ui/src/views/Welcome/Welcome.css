@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+
+.welcomeBody {
+    margin: 0px;
+    height: 100vh;
+    width: 100%;
+    background-color: #feefd1;
+}
+
+.textBody {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.welcomeText {
+    font-family: 'Space Mono', monospace;
+}
+
+.labelText {
+    font-family: 'Space Mono', monospace;
+    font-size: 100px;
+}
+
+.subText {
+    text-align: right;
+    font-family: 'Space Mono', monospace;
+}
+
+.instructionText {
+    text-align: right;
+    font-family: 'Space Mono', monospace;
+}
