@@ -23,3 +23,5 @@ ultralytics
 pytesseract
 easyocr
 textract
+gunicorn
+python-dotenv
