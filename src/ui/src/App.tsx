@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-do
 import Demo from './views/Demo/Demo';
 import Welcome from './views/Welcome/Welcome'
 import Home from './views/Home/Home'
+import About from './views/About/About'
 import './App.css'; // Import CSS file
 
 const App: React.FC = () => {
@@ -33,6 +34,7 @@ const App: React.FC = () => {
           <Route path="/" element={<Welcome />} />
           <Route path="/demo" element={<Demo />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </Router>
     </div>

@@ -4,6 +4,7 @@ import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import BookDataService from '../../services/books.service'
 import DogDataService from '../../services/dogs.service'
 import TextractDataService from '../../services/textract.service'
+import { useNavigate } from 'react-router-dom';
 import '../../views/Home/Home.css'; // Import CSS file
 import BookCard from '../../components/BookCard/BookCard';
 import spine1 from '../../views/Home/spine1.jpg'
@@ -41,6 +42,12 @@ const Home: React.FC<HomePageProps> = () => {
       sampleImageFiles.map(() => false)
     );
 
+    
+    const navigate = useNavigate();
+
+    const navToAbout = () => {
+        navigate("/about");
+    };
 
     const handleUpload = async (file: any) => {
       setLoading(true);
@@ -214,6 +221,9 @@ const Home: React.FC<HomePageProps> = () => {
             </div>
           ))
         )}
+      </div>
+      <div className='footer' >  
+        <Button type="text" onClick={navToAbout} style={{ fontWeight:'700'}} >Click HERE to see more information about this project</Button>
       </div>
     </div>
   );
