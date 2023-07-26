@@ -34,9 +34,15 @@ const BookWheel: React.FC<BookWheelProps> = ({ otherBooks }) => {
                 <img className='thumbnail' src={book.thumbnail} alt={book.title} />
             </div>
             <div className='bookInfo'>
-                <div> {book.title} </div>
-                <div> {book.author} </div>
-                <div> {book.categories} </div>
+            <div style={{ marginBottom: '5px' }}>
+                <b>{book.title}</b>
+            </div>
+            <div style={{ marginBottom: '5px' }}>
+                {book.author}
+            </div>
+            <div style={{ marginBottom: '5px' }}>
+                {book.categories}
+            </div>
             </div>
         </div>
       ))}

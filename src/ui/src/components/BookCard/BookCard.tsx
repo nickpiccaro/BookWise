@@ -1,4 +1,4 @@
-import React, { useState, ReactNode } from 'react';
+import React, { useState, ReactNode, useEffect, useRef } from 'react';
 import { Input, Card, Button, Upload, message } from 'antd';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import BookWheel from '../BooksWheel/BooksWheel';
@@ -14,7 +14,7 @@ const ReadMore: React.FC<{ children: ReactNode }> = ({ children }) => {
     };
     return (
         <p className="text">
-        {isReadMore ? text.slice(0, 150) : text}
+        <b>Description:</b> {isReadMore ? text.slice(0, 150) : text}
         <span onClick={toggleReadMore} className="read-or-hide">
             {isReadMore ? "...read more" : " show less"}
         </span>
@@ -44,6 +44,8 @@ interface BookCardProps {
 }
 
 const BookCard: React.FC<BookCardProps> = ({ bookData, otherBooks }) => {
+    const isListPriceNA = bookData.list_price === 'N/A';
+    const isMainCatNA = bookData.main_category === 'N/A';
   return (
     <div className="bookBody">
         <div className="imageTitle">
@@ -55,7 +57,8 @@ const BookCard: React.FC<BookCardProps> = ({ bookData, otherBooks }) => {
         </div>
         <div className="description">
             <div className="title">
-                {bookData.title} - {bookData.author} - {bookData.published_date}
+                <div style={{ fontWeight: '700', fontSize: '16px'}}>{bookData.title}</div> 
+                {bookData.author} - {bookData.published_date}
             </div>
             <div className="rating">
                 {bookData.average_rating}
@@ -63,20 +66,35 @@ const BookCard: React.FC<BookCardProps> = ({ bookData, otherBooks }) => {
                 {bookData.rating_count}
                 &nbsp; reviews
             </div>
-            <div className='price'>
-                ${bookData.list_price} - ${bookData.retail_price}
-            </div>
+            {isListPriceNA ? (
+                <div style={{fontStyle: 'italic'}} className='price'>
+                    No Price Available
+                </div>
+            ) : (
+                    <div className='price'>
+                        ${bookData.list_price} - ${bookData.retail_price}
+                    </div>
+            )}
             <div className="description">
                 <ReadMore>
                     {bookData.description}
                 </ReadMore>
             </div>
-            <div className='categories'>
-                {bookData.main_category} - {bookData.categories}
-            </div>
+            {isMainCatNA ? (
+                <div className='categories'>
+                    <b>Genres:</b> {bookData.categories}
+                </div>
+            ) : (
+                <div className='categories'>
+                    <b>Genres:</b> {bookData.main_category} - {bookData.categories}
+                </div>
+            )}  
         </div>
         <div className='otherBooks'>
-            <BookWheel otherBooks={otherBooks} />
+            <b>Other Book Possibilities: </b>
+            <div className="booksWheel">
+                <BookWheel otherBooks={otherBooks} />
+            </div>
         </div>
     </div>
   );

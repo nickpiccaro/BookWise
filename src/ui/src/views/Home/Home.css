@@ -1,3 +1,92 @@
-.bookCard {
-    margin-bottom: 5px;
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+
+.homeBody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-color: #feefd1;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 60px;
+}
+
+.instructions {
+    font-family: 'Space Mono', monospace;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+.avatar-uploader {
+    margin-top: 5px;
+}
+
+.sampleImages {
+    display: flex;
+    flex-direction: row;
+}
+
+.bookImg {
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+}
+
+
+.bookImg:hover {
+    border: 2px dotted #5b74ff;
+}
+
+.samplePopover {
+    display: flex;
+    flex-direction: column;
+}
+
+.body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px;
+}
+
+.loadingIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10%;
+}
+
+/* Add CSS to stack all elements on top of each other */
+.header,
+.instructions,
+.upload,
+.body {
+    width: 100%;
+}
+
+.header {
+    margin-bottom: 20px;
 }
