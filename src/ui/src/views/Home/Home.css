@@ -4,10 +4,10 @@
 .homeBody {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    height: 100vh;
+    min-height: 100vh; /* Use min-height instead of height */
     width: 100%;
     background-color: #feefd1;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
 .header {
@@ -65,7 +65,14 @@
     flex-direction: column;
 }
 
+.bookCard {
+    margin-left: -2%;
+    min-width: 99vw;
+    max-width: 99vw;
+}
+
 .body {
+    flex: 1; /* Allow the body to grow and take available space */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -84,7 +91,7 @@
 .instructions,
 .upload,
 .body {
-    width: 100%;
+    width: 100%; /* Limit content width to screen width */
 }
 
 .header {
@@ -92,7 +99,9 @@
 }
 
 .footer {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
+    flex-shrink: 0; /* Prevent footer from shrinking */
+    background-color: #feefd1;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
 }

@@ -226,6 +226,7 @@ const Home: React.FC<HomePageProps> = () => {
         <Button type="text" onClick={navToAbout} style={{ fontWeight:'700'}} >Click HERE to see more information about this project</Button>
       </div>
     </div>
+    
   );
 };
 

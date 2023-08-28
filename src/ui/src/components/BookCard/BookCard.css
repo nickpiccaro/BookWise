@@ -2,6 +2,7 @@
     border: 1px solid #ccc; /* Gray border */
     border-radius: 10px; /* Rounded corners */
     padding: 10px; /* Optional: Add padding to create space between content and border */
+    min-width: 95%;
     height: 220px;
     display: flex;
     flex-direction: row;
